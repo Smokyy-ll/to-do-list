@@ -42,9 +42,9 @@ const formDataHandler = (event, formElement) => {
         date: "",
         isChanged: false,
     };
-    console.log(newNote);
 
     const formId = formElement.dataset.id;
+
     if (formId) {
         const oldNote = findNoteObject(formId);
 
@@ -55,26 +55,28 @@ const formDataHandler = (event, formElement) => {
 
             if (titleChanged || textChanged || favoriteChanged) {
                 newNote.isChanged = true;
-                // Пересмотреть
+                removeNote(oldNote.id);
+                newNote.id = setId(newNote.isFavorite);
                 newNote.date = setDate();
+                if (newNote.isFavorite) {
+                    data.favoritesNotes.push(newNote);
+                } else {
+                    data.regularNotes.push(newNote);
+                }
+                setDataToStorage(keyLocal, data);
+                return;
             }
-            removeNote(oldNote.id);
         }
-    }
-
-    newNote.id = setId(newNote.isFavorite);
-    // Пересмотреть
-    if (!formId) {
-        newNote.date = setDate();
-    }
-
-    if (newNote.isFavorite) {
-        data.favoritesNotes.push(newNote);
     } else {
-        data.regularNotes.push(newNote);
+        newNote.id = setId(newNote.isFavorite);
+        newNote.date = setDate();
+        if (newNote.isFavorite) {
+            data.favoritesNotes.push(newNote);
+        } else {
+            data.regularNotes.push(newNote);
+        }
+        setDataToStorage(keyLocal, data);
     }
-
-    setDataToStorage(keyLocal, data);
 };
 
 const initData = () => {
