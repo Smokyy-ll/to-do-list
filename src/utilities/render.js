@@ -1,5 +1,10 @@
 import creatorModal from "../modal/creator-modal.js";
-import { data, findNoteObject, removeNote } from "./data-handler.js";
+import {
+    changeStatus,
+    data,
+    findNoteObject,
+    removeNote,
+} from "./data-handler.js";
 
 const clearRender = () => {
     const isList = document.querySelector("#list");
@@ -12,6 +17,7 @@ const clearRender = () => {
 const eventHandler = (e) => {
     const isTrashButton = e.target.closest("[data-btn-remove]");
     const isEditBtn = e.target.closest("[data-btn-edit]");
+    const isStatusBtn = e.target.closest("[data-btn-status]");
 
     if (isTrashButton) {
         const idFromNote = e.target.closest("[data-note-item]").id;
@@ -20,13 +26,21 @@ const eventHandler = (e) => {
         render(data.favoritesNotes);
         render(data.regularNotes);
     } else if (isEditBtn) {
-        // передача статуса в в модалку чтобы отображать нужную кнопку
-        // add или edit
         const isEdit = true;
-
-        // поиск объекта старой заметки и передача его в модалку
         const idFromNote = e.target.closest("[data-note-item]").id;
         creatorModal(isEdit, findNoteObject(idFromNote));
+    } else if (isStatusBtn) {
+        // 1. Найти id заметки +
+        // 2. Запустить findNoteObject +
+        // 3. Сменить статус заметки и избранность +
+        // 4. Заменить id найденной заметки через setId +
+        // 5. Вызвать изменение даты +
+        // 6. Удалить заметку из старого массива +
+        // 7. Добавить заметку в новый массив
+        // 8. Сохранить обновленные данные в локалку
+        // 9. clearRender & render
+        const idFromNote = e.target.closest("[data-note-item]").id;
+        changeStatus(idFromNote);
     }
 };
 
@@ -49,10 +63,7 @@ const render = (arrNotes) => {
         }
         template.setAttribute("data-note-item", "");
 
-        // изменение подписи к дате
         const isChangeStatusString = note.isChanged ? "изменена" : "создана";
-        // console.log(note.checkbox);
-
         const iconClass = note.checkbox ? "icon-star-gold" : "icon-star-btn";
         const dateString = note.date.substring(0, 10);
         const timeString = note.date.substring(12, note.date.length);
@@ -65,7 +76,7 @@ const render = (arrNotes) => {
                     <p class="my-auto text-sm text-slate-500 font-semibold dark:text-white">Заметка ${isChangeStatusString} ${dateString} в ${timeString}</p>
                 </div>
                 <div class= "flex gap-2 pt-1 pr-2">
-                    <button class="${iconClass} w-6 h-6 bg-cover bg-no-repeat "></button>
+                    <button class="${iconClass} w-6 h-6 bg-cover bg-no-repeat" data-btn-status></button>
                     <button class="bg-[url('/edit-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/edit-btn-dark.svg')]" data-btn-edit></button>
                     <button class="bg-[url('/trash-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/trash-btn-dark.svg')]" data-btn-remove></button>
                 </div>

@@ -57,6 +57,8 @@ const formDataHandler = (event, formElement) => {
                 newNote.isChanged = true;
                 removeNote(oldNote.id);
                 newNote.id = setId(newNote.isFavorite);
+                console.log(newNote.isFavorite);
+
                 newNote.date = setDate();
                 if (newNote.isFavorite) {
                     data.favoritesNotes.push(newNote);
@@ -135,8 +137,33 @@ const removeNote = (id) => {
     }
 };
 
+const changeStatus = (id) => {
+    const note = findNoteObject(id);
+    note.isChanged = true;
+    if (note.checkbox) {
+        note.checkbox = null;
+    } else {
+        note.checkbox = "on";
+    }
+
+    note.id = setId(note.checkbox);
+    note.date = setDate();
+    // Id не передается
+    removeNote(id);
+    // addNoteToArray(note);
+};
+
+// const addNoteToArray = (objectNote) => {
+//     // Разобраться с дублированием isFavorite и checkbox
+//     if (objectNote.checkbox) {
+//         data.favoritesNotes.push(newNote);
+//     } else {
+//         data.regularNotes.push(newNote);
+//     }
+//     console.log(notes);
+
+// }
+
 const data = initData();
 
-export { data, formDataHandler, removeNote, findNoteObject };
-
-// 1. если заметка не была измена, дату не менять и подписи к ней тоже
+export { data, formDataHandler, removeNote, findNoteObject, changeStatus };
