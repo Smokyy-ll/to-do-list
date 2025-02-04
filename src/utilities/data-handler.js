@@ -45,6 +45,7 @@ const formDataHandler = (event, formElement) => {
 
     const formId = formElement.dataset.id;
 
+    // условие для декомпозиции
     if (formId) {
         const oldNote = findNoteObject(formId);
 
@@ -69,15 +70,48 @@ const formDataHandler = (event, formElement) => {
                 return;
             }
         }
+        changeDataInNote(newNote, formId);
     } else {
-        newNote.id = setId(newNote.isFavorite);
+        newNote.id = setId(newNote.checkbox);
         newNote.date = setDate();
-        if (newNote.isFavorite) {
-            data.favoritesNotes.push(newNote);
-        } else {
-            data.regularNotes.push(newNote);
-        }
+
+        pushToArray(newNote.checkbox, newNote);
+
         setDataToStorage(keyLocal, data);
+    }
+};
+
+// декомпозиция для хендлера
+const changeDataInNote = (newNoteObj, formId) => {
+    const oldNote = findNoteObject(formId);
+
+    if (oldNote) {
+        const titleChanged = oldNote.title !== newNoteObj.title;
+        const textChanged = oldNote.textarea !== newNoteObj.textarea;
+        const favoriteChanged = oldNote.checkbox !== newNoteObj.checkbox;
+
+        if (titleChanged || textChanged || favoriteChanged) {
+            newNoteObj.isChanged = true;
+
+            removeNote(oldNote.id);
+
+            newNoteObj.id = setId(newNoteObj.checkbox);
+            newNoteObj.date = setDate();
+
+            pushToArray(newNoteObj.checkbox, newNoteObj);
+
+            setDataToStorage(keyLocal, data);
+            return;
+        }
+    }
+};
+
+// для добавления в нужный массив
+const pushToArray = (status, objNote) => {
+    if (status) {
+        data.favoritesNotes.push(objNote);
+    } else {
+        data.regularNotes.push(objNote);
     }
 };
 
