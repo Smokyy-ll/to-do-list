@@ -45,7 +45,6 @@ const formDataHandler = (event, formElement) => {
 
     const formId = formElement.dataset.id;
 
-    // условие для декомпозиции
     if (formId) {
         changeDataInNote(newNote, formId);
     } else {
@@ -58,7 +57,6 @@ const formDataHandler = (event, formElement) => {
     }
 };
 
-// декомпозиция для хендлера
 const changeDataInNote = (newNoteObj, formId) => {
     const oldNote = findNoteObject(formId);
 
@@ -80,15 +78,6 @@ const changeDataInNote = (newNoteObj, formId) => {
             setDataToStorage(keyLocal, data);
             return;
         }
-    }
-};
-
-// для добавления в нужный массив
-const pushToArray = (status, objNote) => {
-    if (status) {
-        data.favoritesNotes.push(objNote);
-    } else {
-        data.regularNotes.push(objNote);
     }
 };
 
@@ -130,6 +119,35 @@ const decreaseId = (index, array, mode) => {
     }
 };
 
+// Не находит заметку
+const changeStatus = (id) => {
+    const note = findNoteObject(id);
+    if (!note.isChanged) {
+        note.isChanged = true;
+    }
+    console.log(note);
+
+    if (note.checkbox) {
+        note.checkbox = null;
+    } else {
+        note.checkbox = "on";
+    }
+
+    removeNote(id);
+    note.id = setId(note.checkbox);
+    note.date = setDate();
+    pushToArray(note.checkbox, note);
+};
+
+const pushToArray = (status, objNote) => {
+    if (status) {
+        data.favoritesNotes.push(objNote);
+    } else {
+        data.regularNotes.push(objNote);
+    }
+    console.log(data);
+};
+
 const removeNote = (id) => {
     if (id) {
         const isFavoriteId = id.endsWith("favorite");
@@ -150,6 +168,4 @@ const removeNote = (id) => {
 
 const data = initData();
 
-export { data, formDataHandler, removeNote, findNoteObject };
-
-// 1. если заметка не была измена, дату не менять и подписи к ней тоже
+export { data, formDataHandler, removeNote, findNoteObject, changeStatus };
