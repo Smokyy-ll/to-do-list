@@ -1,6 +1,6 @@
 import creatorModal from "../modal/creator-modal.js";
 import {
-    changeStatus,
+    // changeStatus,
     data,
     findNoteObject,
     removeNote,
@@ -39,8 +39,8 @@ const eventHandler = (e) => {
         // 7. Добавить заметку в новый массив
         // 8. Сохранить обновленные данные в локалку
         // 9. clearRender & render
-        const idFromNote = e.target.closest("[data-note-item]").id;
-        changeStatus(idFromNote);
+        // const idFromNote = e.target.closest("[data-note-item]").id;
+        // changeStatus(idFromNote);
     }
 };
 

@@ -47,29 +47,6 @@ const formDataHandler = (event, formElement) => {
 
     // условие для декомпозиции
     if (formId) {
-        const oldNote = findNoteObject(formId);
-
-        if (oldNote) {
-            const titleChanged = oldNote.title !== newNote.title;
-            const textChanged = oldNote.textarea !== newNote.textarea;
-            const favoriteChanged = oldNote.checkbox !== newNote.checkbox;
-
-            if (titleChanged || textChanged || favoriteChanged) {
-                newNote.isChanged = true;
-                removeNote(oldNote.id);
-                newNote.id = setId(newNote.isFavorite);
-                console.log(newNote.isFavorite);
-
-                newNote.date = setDate();
-                if (newNote.isFavorite) {
-                    data.favoritesNotes.push(newNote);
-                } else {
-                    data.regularNotes.push(newNote);
-                }
-                setDataToStorage(keyLocal, data);
-                return;
-            }
-        }
         changeDataInNote(newNote, formId);
     } else {
         newNote.id = setId(newNote.checkbox);
@@ -171,33 +148,8 @@ const removeNote = (id) => {
     }
 };
 
-const changeStatus = (id) => {
-    const note = findNoteObject(id);
-    note.isChanged = true;
-    if (note.checkbox) {
-        note.checkbox = null;
-    } else {
-        note.checkbox = "on";
-    }
-
-    note.id = setId(note.checkbox);
-    note.date = setDate();
-    // Id не передается
-    removeNote(id);
-    // addNoteToArray(note);
-};
-
-// const addNoteToArray = (objectNote) => {
-//     // Разобраться с дублированием isFavorite и checkbox
-//     if (objectNote.checkbox) {
-//         data.favoritesNotes.push(newNote);
-//     } else {
-//         data.regularNotes.push(newNote);
-//     }
-//     console.log(notes);
-
-// }
-
 const data = initData();
 
-export { data, formDataHandler, removeNote, findNoteObject, changeStatus };
+export { data, formDataHandler, removeNote, findNoteObject };
+
+// 1. если заметка не была измена, дату не менять и подписи к ней тоже
