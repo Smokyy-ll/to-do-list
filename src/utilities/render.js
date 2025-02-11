@@ -80,7 +80,7 @@ const render = (arrNotes) => {
         </article>
         `;
         template.innerHTML = noteElement;
-        listWrapper.appendChild(template);
+        listWrapper.prepend(template);
     });
 
     isList.appendChild(listWrapper);
