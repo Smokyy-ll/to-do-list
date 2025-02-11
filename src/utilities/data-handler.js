@@ -119,13 +119,11 @@ const decreaseId = (index, array, mode) => {
     }
 };
 
-// Не находит заметку
 const changeStatus = (id) => {
     const note = findNoteObject(id);
     if (!note.isChanged) {
         note.isChanged = true;
     }
-    console.log(note);
 
     if (note.checkbox) {
         note.checkbox = null;
@@ -137,6 +135,7 @@ const changeStatus = (id) => {
     note.id = setId(note.checkbox);
     note.date = setDate();
     pushToArray(note.checkbox, note);
+    setDataToStorage(keyLocal, data);
 };
 
 const pushToArray = (status, objNote) => {
@@ -145,7 +144,6 @@ const pushToArray = (status, objNote) => {
     } else {
         data.regularNotes.push(objNote);
     }
-    console.log(data);
 };
 
 const removeNote = (id) => {

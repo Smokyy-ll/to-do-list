@@ -30,19 +30,11 @@ const eventHandler = (e) => {
         const idFromNote = e.target.closest("[data-note-item]").id;
         creatorModal(isEdit, findNoteObject(idFromNote));
     } else if (isStatusBtn) {
-        // 1. Найти id заметки +
-        // 2. Запустить findNoteObject +
-        // 3. Сменить статус заметки и избранность +
-        // 4. Заменить id найденной заметки через setId +
-        // 5. Вызвать изменение даты +
-        // 6. Удалить заметку из старого массива +
-        // 7. Добавить заметку в новый массив
-        // 8. Сохранить обновленные данные в локалку
-        // 9. clearRender & render
         const idFromNote = e.target.closest("[data-note-item]").id;
-        console.log(idFromNote);
-
         changeStatus(idFromNote);
+        clearRender();
+        render(data.favoritesNotes);
+        render(data.regularNotes);
     }
 };
 
