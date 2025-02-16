@@ -21,6 +21,9 @@ const allNotesButtonParams = {
         "hover:bg-cyan-600",
         "hover:text-white",
     ],
+    attr: {
+        id: "btnAllNotes",
+    },
     text: "All Notes",
 };
 
@@ -42,6 +45,9 @@ const favoriteNotesButtonParams = {
         "hover:bg-cyan-600",
         "hover:text-white",
     ],
+    attr: {
+        id: "btnFavNotes",
+    },
     text: "Favorite",
 };
 
