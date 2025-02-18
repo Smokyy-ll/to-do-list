@@ -1,6 +1,9 @@
 const buttonsWrapperParams = {
     tagName: "div",
     classList: ["flex", "gap-4", "justify-center", "py-8"],
+    attrParams: {
+        id: "buttonsWrapper",
+    },
 };
 
 const allNotesButtonParams = {
@@ -20,9 +23,11 @@ const allNotesButtonParams = {
         "duration-300",
         "hover:bg-cyan-600",
         "hover:text-white",
+        "active",
     ],
     attrParams: {
         id: "btnAllNotes",
+        "data-btn": "allNotes",
     },
     text: "All Notes",
 };
@@ -47,6 +52,7 @@ const favoriteNotesButtonParams = {
     ],
     attrParams: {
         id: "btnFavNotes",
+        "data-btn": "favNotes",
     },
     text: "Favorite",
 };

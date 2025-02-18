@@ -17,6 +17,7 @@ const filterButtonsCreator = () => {
 
     wrapperButton.addEventListener("click", (e) => {
         filterNotes(e);
+        activeButton(e);
     });
     return wrapperButton;
 };
@@ -29,6 +30,17 @@ const filterNotes = (e) => {
         clearRender();
         render(data.favoritesNotes);
         render(data.regularNotes);
+    }
+};
+
+const activeButton = (e) => {
+    const parent = e.target.closest("#buttonsWrapper");
+    const activedButtons = parent.querySelectorAll(".active");
+    activedButtons.forEach((btn) => {
+        btn.classList.remove("active");
+    });
+    if (e.target.closest("[data-btn]")) {
+        e.target.classList.add("active");
     }
 };
 

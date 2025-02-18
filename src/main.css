@@ -45,3 +45,7 @@ textarea::-webkit-resizer {
 body.dark .icon-star-btn {
     background-image: url("/star-btn-dark.svg");
 }
+
+btn.active {
+    background-color: brown;
+}
