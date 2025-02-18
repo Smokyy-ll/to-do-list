@@ -1,9 +1,12 @@
+import { render } from "../utilities/render.js";
 import createElement from "../utilities/creator.js";
+import { clearRender } from "../utilities/render.js";
 import {
     allNotesButtonParams,
     buttonsWrapperParams,
     favoriteNotesButtonParams,
 } from "./buttons-params.js";
+import { data } from "../utilities/data-handler.js";
 
 const filterButtonsCreator = () => {
     const wrapperButton = createElement(buttonsWrapperParams);
@@ -11,6 +14,7 @@ const filterButtonsCreator = () => {
     const favoriteNotesButton = createElement(favoriteNotesButtonParams);
 
     wrapperButton.prepend(allNotesButton, favoriteNotesButton);
+
     wrapperButton.addEventListener("click", (e) => {
         filterNotes(e);
     });
@@ -18,11 +22,14 @@ const filterButtonsCreator = () => {
 };
 
 const filterNotes = (e) => {
-    console.log(e);
-    // 1. Создать флаговую переменную для текущей кнопки
-    // 2. Проверить, что внутри переменной лежит кнопка с нужным id
-    // 3. В зависимости от условия запускать render с нужным массивом (перед этим запустить очистку рендера)
-    // 4. Получение нужного массива можно найти в creator-modal на 97-98 строке
+    if (e.target.closest("#btnFavNotes")) {
+        clearRender();
+        render(data.favoritesNotes);
+    } else if (e.target.closest("#btnAllNotes")) {
+        clearRender();
+        render(data.favoritesNotes);
+        render(data.regularNotes);
+    }
 };
 
 export default filterButtonsCreator;
