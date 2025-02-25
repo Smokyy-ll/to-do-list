@@ -66,7 +66,7 @@ const render = (arrNotes) => {
         <article class="border-2 border-cyan-600 rounded-md dark:border-white">
             <div class="flex justify-between pl-2">
                 <div class="flex">
-                    <h2 class="text-2xl text-cyan-700 mr-4 font-semibold dark:text-cyan-500">${note.title}</h2>
+                    <h2 class="text-2xl text-cyan-700 mr-4 font-semibold dark:text-cyan-500" data-note-header>${note.title}</h2>
                     <p class="my-auto text-sm text-slate-500 font-semibold dark:text-white">Заметка ${isChangeStatusString} ${dateString} в ${timeString}</p>
                 </div>
                 <div class= "flex gap-2 pt-1 pr-2">
@@ -76,7 +76,7 @@ const render = (arrNotes) => {
                 </div>
             </div>
 
-            <p class="pl-2 dark:text-white mb-1">${note.textarea}</p>
+            <p class="pl-2 dark:text-white mb-1" data-note-text>${note.textarea}</p>
         </article>
         `;
         template.innerHTML = noteElement;
