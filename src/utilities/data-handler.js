@@ -32,7 +32,7 @@ const setId = (statusNote) => {
     return newId;
 };
 
-const formDataHandler = (event, formElement) => {
+const formDataHandler = (formElement) => {
     const formData = new FormData(formElement);
     const newNote = {
         title: formData.get("title").trim(),

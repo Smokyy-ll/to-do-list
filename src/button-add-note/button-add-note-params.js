@@ -10,6 +10,7 @@ const buttonAddNoteParams = {
         "text-2xl",
         "dark:text-white",
         "font-semibold",
+        "outline-none",
     ],
     text: "Add Note",
 };
