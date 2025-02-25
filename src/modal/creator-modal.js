@@ -20,6 +20,7 @@ const creatorModal = (status, noteInfo = {}) => {
     const isForm = document.querySelector("#form");
     if (!isForm) {
         const containerApp = document.body;
+
         const fadeBlockElement = createElement(fadeBlockParams);
         const modalElement = createElement(modalParams);
 
@@ -90,18 +91,21 @@ const creatorModal = (status, noteInfo = {}) => {
 
         inputTitle.focus();
 
-        modalElement.addEventListener("submit", (event) => {
-            console.log(event);
+        if (modalElement) {
+            modalElement.addEventListener("submit", (event) => {
+                console.log(event);
 
-            event.preventDefault();
-            formDataHandler(event.target);
-            clearRender();
-            render(data.favoritesNotes);
-            render(data.regularNotes);
-
-            modalElement.remove();
-            fadeBlockElement.remove();
-        });
+                event.preventDefault();
+                formDataHandler(event.target);
+                clearRender();
+                render(data.favoritesNotes);
+                render(data.regularNotes);
+                setTimeout(() => {
+                    modalElement.remove();
+                    fadeBlockElement.remove();
+                }, 1000);
+            });
+        }
 
         buttonCancel.addEventListener("click", () => {
             modalElement.remove();
