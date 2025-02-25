@@ -38,6 +38,7 @@ const creatorModal = (status, noteInfo = {}) => {
             inputTitle = createElement(updateInputTitleParams);
         } else {
             inputTitle = createElement(inputTitleParams);
+            inputTitle.value = "";
         }
 
         if (noteInfo.textarea) {
@@ -46,6 +47,7 @@ const creatorModal = (status, noteInfo = {}) => {
             textarea = createElement(updateTextareaParams);
         } else {
             textarea = createElement(textareaParams);
+            textarea.value = "";
         }
 
         if (noteInfo.checkbox) {
@@ -89,11 +91,14 @@ const creatorModal = (status, noteInfo = {}) => {
         inputTitle.focus();
 
         modalElement.addEventListener("submit", (event) => {
+            console.log(event);
+
             event.preventDefault();
             formDataHandler(event.target);
             clearRender();
             render(data.favoritesNotes);
             render(data.regularNotes);
+
             modalElement.remove();
             fadeBlockElement.remove();
         });
