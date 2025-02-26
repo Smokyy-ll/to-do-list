@@ -94,16 +94,13 @@ const creatorModal = (status, noteInfo = {}) => {
         if (modalElement) {
             modalElement.addEventListener("submit", (event) => {
                 console.log(event);
-
                 event.preventDefault();
                 formDataHandler(event.target);
                 clearRender();
                 render(data.favoritesNotes);
                 render(data.regularNotes);
-                setTimeout(() => {
-                    modalElement.remove();
-                    fadeBlockElement.remove();
-                }, 1000);
+                modalElement.remove();
+                fadeBlockElement.remove();
             });
         }
 
@@ -120,5 +117,3 @@ const creatorModal = (status, noteInfo = {}) => {
 };
 
 export default creatorModal;
-// 1. Очистка старых данных из модалки
-// 2. Правка на калвишу enter
