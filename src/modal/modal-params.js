@@ -25,6 +25,7 @@ const modalParams = {
         "translate-y-2/4",
         "py-9",
         "px-7",
+        "duration-500",
     ],
     attrParams: {
         id: "form",

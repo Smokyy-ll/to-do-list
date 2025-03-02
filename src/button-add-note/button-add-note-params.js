@@ -11,6 +11,7 @@ const buttonAddNoteParams = {
         "dark:text-white",
         "font-semibold",
         "outline-none",
+        "duration-500",
     ],
     text: "Add Note",
 };
@@ -24,6 +25,7 @@ const buttonAddNoteIconParams = {
         "bg-[url('/btn-add-note-icon.svg')]",
         "dark:bg-[url('/btn-add-note-icon-dark.svg')]",
         "bg-cover",
+        "duration-500",
     ],
 };
 

@@ -43,6 +43,7 @@ const nightBtnParams = {
         "items-center",
         "dark:bg-white",
         "shrink-0",
+        "duration-500",
     ],
 };
 
@@ -56,6 +57,7 @@ const wrapperIconBtnParams = {
         "dark:bg-[url('/moon.svg')]",
         "bg-no-repeat",
         "bg-contain",
+        "duration-500",
     ],
 };
 
