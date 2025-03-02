@@ -57,26 +57,26 @@ const render = (arrNotes) => {
         }
         template.setAttribute("data-note-item", "");
 
-        const isChangeStatusString = note.isChanged ? "изменена" : "создана";
+        const isChangeStatusString = note.isChanged ? "Изменено" : "Создано";
         const iconClass = note.checkbox ? "icon-star-gold" : "icon-star-btn";
         const dateString = note.date.substring(0, 10);
         const timeString = note.date.substring(12, note.date.length);
 
         const noteElement = `
         <article class="border-2 border-cyan-600 rounded-md dark:border-white ml-5 mr-5">
-            <div class="flex justify-between pl-2">
-                <div class="flex">
-                    <h2 class="text-2xl text-cyan-700 mr-4 font-semibold dark:text-cyan-500" data-note-header>${note.title}</h2>
-                    <p class="my-auto text-sm text-slate-500 font-semibold dark:text-white">Заметка ${isChangeStatusString} ${dateString} в ${timeString}</p>
-                </div>
-                <div class= "flex gap-2 pt-1 pr-2">
-                    <button class="${iconClass} w-6 h-6 bg-cover bg-no-repeat" data-btn-status></button>
-                    <button class="bg-[url('/edit-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/edit-btn-dark.svg')]" data-btn-edit></button>
-                    <button class="bg-[url('/trash-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/trash-btn-dark.svg')]" data-btn-remove></button>
+            <div class="flex justify-between pl-2 flex-wrap">
+                <h2 class="text-2xl text-cyan-700 mr-4 font-semibold dark:text-cyan-500 text-ellipsis overflow-hidden max-w-[400px]" data-note-header>${note.title}</h2>
+                <div class="flex gap-6">
+                    <p class="my-auto text-sm text-slate-500 font-semibold dark:text-white">${isChangeStatusString} ${dateString} в ${timeString}</p>
+                    <div class= "flex gap-2 pt-1 pr-2">
+                        <button class="${iconClass} w-6 h-6 bg-cover bg-no-repeat" data-btn-status></button>
+                        <button class="bg-[url('/edit-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/edit-btn-dark.svg')]" data-btn-edit></button>
+                        <button class="bg-[url('/trash-btn.svg')] w-6 h-6 bg-cover bg-no-repeat dark:bg-[url('/trash-btn-dark.svg')]" data-btn-remove></button>
+                    </div>
                 </div>
             </div>
 
-            <p class="pl-2 dark:text-white mb-1" data-note-text>${note.textarea}</p>
+            <p class="pl-2 dark:text-white mb-1 text-ellipsis overflow-hidden" data-note-text>${note.textarea}</p>
         </article>
         `;
         template.innerHTML = noteElement;
