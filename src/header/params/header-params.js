@@ -13,6 +13,11 @@ const headerParams = {
     ],
 };
 
+const wrapperHeaderElementParams = {
+    tagName: "div",
+    classList: ["flex", "items-center"],
+};
+
 const mainTitleParams = {
     tagName: "h1",
     classList: [
@@ -37,6 +42,7 @@ const nightBtnParams = {
         "justify-center",
         "items-center",
         "dark:bg-white",
+        "shrink-0",
     ],
 };
 
@@ -53,4 +59,10 @@ const wrapperIconBtnParams = {
     ],
 };
 
-export { headerParams, mainTitleParams, nightBtnParams, wrapperIconBtnParams };
+export {
+    headerParams,
+    mainTitleParams,
+    nightBtnParams,
+    wrapperIconBtnParams,
+    wrapperHeaderElementParams,
+};

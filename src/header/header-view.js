@@ -4,20 +4,23 @@ import {
     mainTitleParams,
     nightBtnParams,
     wrapperIconBtnParams,
+    wrapperHeaderElementParams,
 } from "./params/header-params.js";
 import nightMode from "../controller/nightMode.js";
 import filterCreator from "../filter-notes/filter-notes.js";
 
 const createHeader = () => {
     const headerElement = createElement(headerParams);
+    const wrapperHeaderElement = createElement(wrapperHeaderElementParams);
     const mainTitle = createElement(mainTitleParams);
     const nightModeBtn = createElement(nightBtnParams);
     const wrapperIconElement = createElement(wrapperIconBtnParams);
     const input = filterCreator();
 
     headerElement.insertAdjacentElement("beforeend", mainTitle);
-    headerElement.insertAdjacentElement("beforeend", input);
-    headerElement.insertAdjacentElement("beforeend", nightModeBtn);
+    headerElement.insertAdjacentElement("beforeend", wrapperHeaderElement);
+    wrapperHeaderElement.insertAdjacentElement("beforeend", input);
+    wrapperHeaderElement.insertAdjacentElement("beforeend", nightModeBtn);
     nightModeBtn.insertAdjacentElement("beforeend", wrapperIconElement);
 
     nightModeBtn.addEventListener("click", nightMode);

@@ -63,7 +63,7 @@ const render = (arrNotes) => {
         const timeString = note.date.substring(12, note.date.length);
 
         const noteElement = `
-        <article class="border-2 border-cyan-600 rounded-md dark:border-white">
+        <article class="border-2 border-cyan-600 rounded-md dark:border-white ml-5 mr-5">
             <div class="flex justify-between pl-2">
                 <div class="flex">
                     <h2 class="text-2xl text-cyan-700 mr-4 font-semibold dark:text-cyan-500" data-note-header>${note.title}</h2>

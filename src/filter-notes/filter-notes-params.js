@@ -2,6 +2,7 @@ const filterInputParams = {
     tagName: "input",
     classList: [
         "dark:border-white",
+        "dark:bg-gray-900",
         "border-2",
         "border-cyan-600",
         "rounded-lg",

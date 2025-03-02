@@ -24,6 +24,10 @@ const allNotesButtonParams = {
         "hover:bg-cyan-600",
         "hover:text-white",
         "active",
+        "dark:border-white",
+        "dark:hover:text-cyan-600",
+        "dark:hover:bg-white",
+        "dark:text-white",
     ],
     attrParams: {
         id: "btnAllNotes",
@@ -49,6 +53,10 @@ const favoriteNotesButtonParams = {
         "duration-300",
         "hover:bg-cyan-600",
         "hover:text-white",
+        "dark:border-white",
+        "dark:hover:text-cyan-600",
+        "dark:hover:bg-white",
+        "dark:text-white",
     ],
     attrParams: {
         id: "btnFavNotes",
