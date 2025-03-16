@@ -100,10 +100,8 @@ const creatorModal = (status, noteInfo = {}) => {
                 clearRender();
                 render(data.favoritesNotes);
                 render(data.regularNotes);
-                setTimeout(() => {
-                    modalElement.remove();
-                    fadeBlockElement.remove();
-                }, 1000);
+                modalElement.remove();
+                fadeBlockElement.remove();
             });
         }
 

@@ -31,8 +31,13 @@ textarea::-webkit-resizer {
     background-position: center;
 }
 
-.real-checkbox:checked + .custom-checkbox {
+.real-checkbox:checked + .custom-checkbox,
+body.dark .real-checkbox:checked + .custom-checkbox {
     background-image: url(/star-gold.svg);
+}
+
+body.dark .real-checkbox + .custom-checkbox {
+    background-image: url(/star-btn-dark.svg);
 }
 
 .icon-star-gold {

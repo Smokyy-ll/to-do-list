@@ -26,6 +26,7 @@ const modalParams = {
         "py-9",
         "px-7",
         "duration-500",
+        "dark:bg-slate-900",
     ],
     attrParams: {
         id: "form",
@@ -41,12 +42,20 @@ const headerModalParams = {
         "border-b-2",
         "border-cyan-600",
         "mb-3",
+        "dark:bg-slate-900",
+        "dark:text-white",
     ],
 };
 
 const inputTitleParams = {
     tagName: "input",
-    classList: ["outline-none", "text-xl", "font-medium", "w-full"],
+    classList: [
+        "outline-none",
+        "text-xl",
+        "font-medium",
+        "w-full",
+        "dark:bg-slate-900",
+    ],
     attrParams: {
         type: "text",
         placeholder: "Title",
@@ -85,6 +94,8 @@ const textareaParams = {
         "mb-4",
         "focus:shadow-xl",
         "text-lg",
+        "dark:bg-slate-900",
+        "dark:text-white",
     ],
     attrParams: {
         placeholder: "Your note",
