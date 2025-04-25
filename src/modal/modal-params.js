@@ -120,6 +120,9 @@ const buttonAddParams = {
         "min-w-[80px]",
     ],
     text: "Add",
+    attrParams: {
+        type: "submit",
+    },
 };
 
 const buttonEditParams = {
@@ -134,6 +137,9 @@ const buttonEditParams = {
         "min-w-[80px]",
     ],
     text: "Edit",
+    attrParams: {
+        type: "submit",
+    },
 };
 
 const buttonCancelParams = {
@@ -148,6 +154,9 @@ const buttonCancelParams = {
         "min-w-[80px]",
     ],
     text: "Cancel",
+    attrParams: {
+        type: "button",
+    },
 };
 
 export {

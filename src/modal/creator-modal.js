@@ -94,7 +94,6 @@ const creatorModal = (status, noteInfo = {}) => {
         if (modalElement) {
             modalElement.addEventListener("submit", (event) => {
                 console.log(event);
-
                 event.preventDefault();
                 formDataHandler(event.target);
                 clearRender();
@@ -118,5 +117,3 @@ const creatorModal = (status, noteInfo = {}) => {
 };
 
 export default creatorModal;
-// 1. Очистка старых данных из модалки
-// 2. Правка на калвишу enter
